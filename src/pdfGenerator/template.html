@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>A simple, clean, and responsive HTML invoice template</title>
+
+    <style>
+        body {
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            font-size: 11px;
+            line-height: 14px;
+            position: relative;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .page {
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        table, tr, th, td {
+            border-collapse: collapse;
+            border: solid 1px;
+        }
+
+        tr:first-child {
+            text-align: center;
+        }
+
+        tr:last-child {
+            height: 100%;
+        }
+
+        tr:not(:first-child) {
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .signature {
+            padding-top: 45px;
+            text-align: right;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0 0;
+            -webkit-border-vertical-spacing: 0;
+            min-height: 225mm !important;
+            position: relative;
+            table-layout: fixed;
+        }
+
+        ul {
+            padding-left: 5mm;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+{{#each data}}
+<div class="page portrait">
+    <h2>Course of practice</h2>
+    <table>
+        <tr>
+            <th style="width: 10%">Date, working hours</th>
+            <th style="width: 10%">Gender, <br/>age of the client</th>
+            <th style="width: 60%">Implementation of the practice program /<br/>
+                the course of the procedure<br/>
+                (preparations and apparatus used)</th>
+            <th style="width: 20%">Comments</th>
+        </tr>
+        <tr>
+            <td rowspan="0">{{@key}}<br/>{{this.time}} hours</td>
+            <td>{{this.first.sex}}<br/>approx. {{this.first.age}}</td>
+            <td style="text-align: left">
+                <ul>
+                    <li>{{this.first.task}}</li>
+                    <li>{{this.first.diagnosis}}</li>
+                    <li>
+                        Course:
+                        <ul style="list-style-type: decimal">
+                        {{#each this.first.actions}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>{{this.first.opinion}}</td>
+        </tr>
+        <tr>
+            <td>{{this.second.sex}}<br/>approx. {{this.second.age}}</td>
+            <td style="text-align: left">
+                <ul>
+                    <li>{{this.second.task}}</li>
+                    <li>{{this.second.diagnosis}}</li>
+                    <li>
+                        Course:
+                        <ul style="list-style-type: decimal">
+                        {{#each this.second.actions}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>{{this.second.opinion}}</td>
+        </tr>
+        {{#each this.recs}}
+        <tr>
+            <td>{{this.sex}}<br/>approx. {{this.age}}</td>
+            <td style="text-align: left">
+                <ul>
+                    <li>{{this.task}}</li>
+                    <li>{{this.diagnosis}}</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        {{/each}}
+    </table>
+    <div class="signature">
+        Supervisor signature ......................................................
+    </div>
+</div>
+{{/each}}
+</body>
+</html>
