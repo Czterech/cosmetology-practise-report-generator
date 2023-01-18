@@ -1,34 +1,31 @@
 # Foobar
-YES
+Script should be used for generating practise reports for cosmetology students
+
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 ```bash
-pip install foobar
+npm install
 ```
 
-## Usage
+## Prerequisites
+Prepare `.env` file based on schema from `.end.dist` and if you wish update rows of `resources/sample.xlsx` file
+##### Example .env:
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```
+EXCEL_PATH=/resources/sample.xlsx
+WORKING_DAYS=0;8;8;8;6;8;8
+START_DAY=2022-04-07
+END_DAY=2022-07-07
+DAYS_OFF=2022-05-11;2022-06-02;2022-06-03
+HOURS_ON_DAY=8
+TOTAL_HOURS_TO_WORK=560
+RES_FILE_PATH=res.pdf
 ```
 
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+## Run
+```
+npm start
+```
 
 ## License
 
